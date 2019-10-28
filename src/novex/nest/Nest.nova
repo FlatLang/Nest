@@ -10,9 +10,12 @@ class Nest<X> {
     
     construct(this X data) {}
     
-    public toBe(X other, var String message = null) => true {
+    public toBe(
+        X other,
+        String customMessage = null
+    ) => true {
         if (other != data) {
-            message = message ?: "#data != #other"
+            let message = customMessage ?: "#data != #other"
             
             throw new InvalidAssertionException(message)
             
@@ -22,10 +25,13 @@ class Nest<X> {
     
     // or
     
-    public toNotBe(X other, var String message = null) => true {
+    public toNotBe(
+        X other,
+        String customMessage = null
+    ) => true {
         if (other == data) {
-            message = message ?: "#data == #other"
-            
+            let message = customMessage ?: "#data == #other"
+
             throw new InvalidAssertionException(message)
             
             return false
@@ -33,9 +39,13 @@ class Nest<X> {
     }
     
     [RequireGenericType X extends Double]
-    public toBeWithinToleranceOf(Double target, passing Double tolerance = 0.0001, var String message = null) => true {
+    public toBeWithinToleranceOf(
+        Double target,
+        passing Double tolerance = 0.0001,
+        var String customMessage = null
+    ) => true {
         if (!Double.withinTolerance((Double)data, target, tolerance)) {
-            message = message ?: "#data not within tolerance of #target"
+            let message = customMessage ?: "#data not within tolerance of #target"
             
             throw new InvalidAssertionException(message)
             
@@ -43,18 +53,30 @@ class Nest<X> {
         }
     }
     
-    public toThrow(Class exceptionType, String message = "Did not throw exception type #exceptionType", Bool soft = false) {
+    public toThrow(
+        Class exceptionType,
+        String customMessage = null,
+        Bool soft = false
+    ) {
         let func() = data
         
         if (!Exception.catchType(func, exceptionType, soft)) {
+            let message = customMessage ?: "Did not throw exception type #exceptionType"
+
             throw new InvalidAssertionException(message)
         }
     }
     
-    public toNotThrow(Class exceptionType, String message = "Threw exception type #exceptionType", Bool soft = false) {
+    public toNotThrow(
+        Class exceptionType,
+        String customMessage = null,
+        Bool soft = false
+    ) {
         let func() = data
         
         if (Exception.catchType(func, exceptionType, soft)) {
+            let message = customMessage ?: "Threw exception type #exceptionType"
+
             throw new InvalidAssertionException(message)
         }
     }
