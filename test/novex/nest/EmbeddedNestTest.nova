@@ -15,7 +15,7 @@ class EmbeddedNestTest {
 
 	test lambdaFunction() {
 		test("something", {
-			expect({  }).toThrow(NestException)
+			expect({  }).toThrow(NestException.class)
 		})
 	}
 }
