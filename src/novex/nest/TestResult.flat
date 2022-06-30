@@ -1,6 +1,6 @@
 package "novex/nest"
 
-import "nova/time/Timer"
+import "flatlang/time/Timer"
 
 class TestResult {
     visible Bool success

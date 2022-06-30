@@ -1,30 +1,30 @@
 package "novex/nest"
 
-import "nova/io/FancyOutputStream"
-import "nova/primitive/number/RealNumber"
+import "flatlang/io/FancyOutputStream"
+import "flatlang/primitive/number/RealNumber"
 
 class Nest<X> {
     visible static final FancyOutputStream out = new FancyOutputStream()
-    
+
     X data
-    
+
     construct(this X data) {}
-    
+
     public toBe(
         X other,
         String customMessage = null
     ) => true {
         if (other != data) {
             let message = customMessage ?: "#data != #other"
-            
+
             throw new InvalidAssertionException(message)
-            
+
             return false
         }
     }
-    
+
     // or
-    
+
     public toNotBe(
         X other,
         String customMessage = null
@@ -33,11 +33,11 @@ class Nest<X> {
             let message = customMessage ?: "#data == #other"
 
             throw new InvalidAssertionException(message)
-            
+
             return false
         }
     }
-    
+
     [RequireGenericType X extends Double]
     public toBeWithinToleranceOf(
         Double target,
@@ -46,47 +46,47 @@ class Nest<X> {
     ) => true {
         if (!Double.withinTolerance((Double)data, target, tolerance)) {
             let message = customMessage ?: "#data not within tolerance of #target"
-            
+
             throw new InvalidAssertionException(message)
-            
+
             return false
         }
     }
-    
+
     public toThrow(
         Class exceptionType,
         String customMessage = null,
         Bool soft = false
     ) {
         let func() = data
-        
+
         if (!Exception.catchType(func, exceptionType, soft)) {
             let message = customMessage ?: "Did not throw exception type #exceptionType"
 
             throw new InvalidAssertionException(message)
         }
     }
-    
+
     public toNotThrow(
         Class exceptionType,
         String customMessage = null,
         Bool soft = false
     ) {
         let func() = data
-        
+
         if (Exception.catchType(func, exceptionType, soft)) {
             let message = customMessage ?: "Threw exception type #exceptionType"
 
             throw new InvalidAssertionException(message)
         }
     }
-    
+
     public static fail(String message = "Failure") {
         throw new InvalidAssertionException(message)
     }
-    
+
     public static expect<T>(T obj) => new Nest<T>(obj)
-    
+
     public static expect(func()) => new Nest<func()>(func)
 
     public static test(String description, testCode()) {

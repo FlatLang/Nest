@@ -4,56 +4,56 @@ import "novex/nest/TestRunner"
 import "novex/nest/TestCase"
 import "novex/nest/TestSuiteRunner"
 
-import "nova/datastruct/Tuple2"
-import "nova/datastruct/HashMap"
+import "flatlang/datastruct/Tuple2"
+import "flatlang/datastruct/HashMap"
 
-import "nova/star/Window"
-import "nova/star/Frame"
-import "nova/star/Label"
+import "flatlang/star/Window"
+import "flatlang/star/Frame"
+import "flatlang/star/Label"
 
-import "nova/io/OutputStream"
+import "flatlang/io/OutputStream"
 
 class ResultWindow extends Window {
     public construct(TestRunner runner, OutputStream out = OutputStream.EMPTY) {
         super(title: "Results", x: 0, y: 0, width: 800, height: 500)
-        
+
         Console.log("Test case count: #runner.testCases.count")
-        
+
         HashMap<TestCase, Tuple2<Label, ResultBar>> bars = new HashMap()
-        
+
         var Int maxLabelWidth = 0
-        
+
         runner.testCases.forEach((case, i) => {
             Int y = 20 + (30 * i)
-            
+
             let resultBar = new ResultBar(10, y)
             resultBar.testCount = 1
             resultBar.successCount = 0
-            
+
             let label = new Label(case.header, 10 + resultBar.width + 10, y + 5)
-            
+
             frame.addChild(resultBar)
             frame.addChild(label)
-            
+
             bars[case] = new Tuple2(label, resultBar)
         })
-        
+
         runner.runTests(result => {
             if (let bar = bars[result.testCase]) {
                 bar.item2.successCount = 1
             }
         }, out)
-        
+
         // let runners = runner.class.isOfType(TestSuiteRunner) ?
         //     ((TestSuiteRunner)runner).testRunners :
         //     new TestRunner[1].add(runner)
-        
+
         // runners.forEach({
         //     _.runTests(result => {
-                
+
         //     })
         // })
-        
+
         center()
     }
 }

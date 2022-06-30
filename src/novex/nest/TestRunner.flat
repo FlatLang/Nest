@@ -1,11 +1,11 @@
 package "novex/nest"
 
-import "nova/io/OutputStream"
+import "flatlang/io/OutputStream"
 
 trait TestRunner {
     visible TestRunnerModel model => null
     visible TestCase[] testCases => model.testCases
     visible String description => model.description
-    
+
     public runTests(onResult(TestResult) = {}, OutputStream out = Console.out) {}
 }
