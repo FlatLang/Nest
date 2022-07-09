@@ -81,6 +81,42 @@ class Nest<X> {
         }
     }
 
+    public toThrowWithMessage(
+        Class exceptionType,
+        String expectedMessage,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
+        let e = Exception.catchType(func, exceptionType, soft)
+
+        if (!e) {
+            let message = customMessage ?: "Did not throw exception type #exceptionType"
+
+            throw new InvalidAssertionException(message)
+        } else if (e.message != expectedMessage) {
+            let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
+
+            throw new InvalidAssertionException(message)
+        }
+    }
+
+    public toNotThrowWithMessage(
+        Class exceptionType,
+        String expectedMessage,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
+        let e = Exception.catchType(func, exceptionType, soft)
+
+        if (e && e.message == expectedMessage) {
+            let message = customMessage ?: "Threw exception type #exceptionType"
+
+            throw new InvalidAssertionException(message)
+        }
+    }
+
     public static fail(String message = "Failure") {
         throw new InvalidAssertionException(message)
     }
