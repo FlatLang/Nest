@@ -1,0 +1,21 @@
+{
+  "name": "Nest",
+  "version": "0.1.0",
+  "description": "Flat Testing Library",
+  "author": "Braden Steffaniak",
+  "license": "ISC",
+  "scripts": {},
+  "main": {
+    "source": "src",
+    "dependencies": {
+      "github:FlatLang/Time": "master",
+      "github:FlatLang/IO": "master",
+      "github:FlatLang/System": "master"
+    }
+  },
+  "test": {
+    "mainClass": "flatlang/http/Time_TestSuite",
+    "source": "src",
+    "dependencies": {}
+  }
+}
