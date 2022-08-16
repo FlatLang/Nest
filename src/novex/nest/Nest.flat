@@ -4,7 +4,7 @@ import "flatlang/io/FancyOutputStream"
 import "flatlang/primitive/number/RealNumber"
 
 class Nest<X> {
-    visible static final FancyOutputStream out = new FancyOutputStream()
+    visible static final FancyOutputStream out = FancyOutputStream()
 
     X data
 
@@ -17,7 +17,7 @@ class Nest<X> {
         if (other != data && (other == null || !other.equals(data))) {
             let message = customMessage ?: "#data != #other"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
 
             return false
         }
@@ -32,7 +32,7 @@ class Nest<X> {
         if (other == data || other != null && other.equals(data)) {
             let message = customMessage ?: "#data == #other"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
 
             return false
         }
@@ -47,7 +47,7 @@ class Nest<X> {
         if (!Double.withinTolerance((Double)data, target, tolerance)) {
             let message = customMessage ?: "#data not within tolerance of #target"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
 
             return false
         }
@@ -63,7 +63,7 @@ class Nest<X> {
         if (!Exception.catchType(func, exceptionType, soft)) {
             let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
         }
     }
 
@@ -77,7 +77,7 @@ class Nest<X> {
         if (Exception.catchType(func, exceptionType, soft)) {
             let message = customMessage ?: "Threw exception type #exceptionType"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
         }
     }
 
@@ -93,11 +93,11 @@ class Nest<X> {
         if (!e) {
             let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
         } else if (e.message != expectedMessage) {
             let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
         }
     }
 
@@ -113,17 +113,17 @@ class Nest<X> {
         if (e && e.message == expectedMessage) {
             let message = customMessage ?: "Threw exception type #exceptionType"
 
-            throw new InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
         }
     }
 
     public static fail(String message = "Failure") {
-        throw new InvalidAssertionException(message)
+        throw InvalidAssertionException(message)
     }
 
-    public static expect<T>(T obj) => new Nest<T>(obj)
+    public static expect<T>(T obj) => Nest<T>(obj)
 
-    public static expect(func()) => new Nest<func()>(func)
+    public static expect(func()) => Nest<func()>(func)
 
     public static test(String description, testCode()) {
         testCode()
