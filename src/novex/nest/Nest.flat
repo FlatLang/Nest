@@ -1,7 +1,7 @@
-package "novex/nest"
+package novex/nest
 
-import "flatlang/io/FancyOutputStream"
-import "flatlang/primitive/number/RealNumber"
+import flatlang/io/FancyOutputStream
+import flatlang/primitive/number/RealNumber
 
 class Nest<X> {
   visible static final FancyOutputStream out = FancyOutputStream()

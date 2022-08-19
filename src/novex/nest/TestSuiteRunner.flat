@@ -1,4 +1,4 @@
-package "novex/nest"
+package novex/nest
 
 trait TestSuiteRunner implements TestRunner {
 

@@ -1,8 +1,8 @@
-package "novex/nest"
+package novex/nest
 
-import "novex/nest/NestException"
+import novex/nest/NestException
 
-import static "novex/nest/Nest"
+import static novex/nest/Nest
 
 class EmbeddedNestTest {
 	test embeddedFunction() {

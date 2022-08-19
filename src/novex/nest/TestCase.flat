@@ -1,6 +1,6 @@
-package "novex/nest"
+package novex/nest
 
-import "flatlang/operators/EqualsOperator"
+import flatlang/operators/EqualsOperator
 
 class TestCase implements EqualsOperator<TestCase> {
   visible String functionName

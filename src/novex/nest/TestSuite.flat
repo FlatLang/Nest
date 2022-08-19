@@ -1,4 +1,4 @@
-package "novex/nest"
+package novex/nest
 
 class TestSuite {
   visible TestRunnerModel[] testRunners

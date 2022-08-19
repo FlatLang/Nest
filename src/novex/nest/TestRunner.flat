@@ -1,6 +1,6 @@
-package "novex/nest"
+package novex/nest
 
-import "flatlang/io/OutputStream"
+import flatlang/io/OutputStream
 
 trait TestRunner {
   visible TestRunnerModel model => null

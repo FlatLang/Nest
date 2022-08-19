@@ -1,4 +1,4 @@
-package "novex/nest"
+package novex/nest
 
 class TestSuiteRunnerModel extends TestRunnerModel {
   visible TestCase[] testCases => testRunners.reduce({ _ + _.testCases }, new TestCase[0])
