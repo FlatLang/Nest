@@ -1,13 +1,13 @@
 package "novex/nest"
 
 class TestSuiteRunnerModel extends TestRunnerModel {
-    visible TestCase[] testCases => testRunners.reduce({ _ + _.testCases }, new TestCase[0])
-    
-    visible TestRunnerModel[] testRunners => testSuites.reduce({ _ + _.testRunners }, new TestRunnerModel[0])
-    
-    visible TestSuite[] testSuites
-    
-    public construct(visible TestSuite[] testSuites) {
-        super(null, null)
-    }
+  visible TestCase[] testCases => testRunners.reduce({ _ + _.testCases }, new TestCase[0])
+
+  visible TestRunnerModel[] testRunners => testSuites.reduce({ _ + _.testRunners }, new TestRunnerModel[0])
+
+  visible TestSuite[] testSuites
+
+  public construct(visible TestSuite[] testSuites) {
+    super(null, null)
+  }
 }

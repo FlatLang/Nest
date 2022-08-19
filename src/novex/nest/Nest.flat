@@ -4,128 +4,128 @@ import "flatlang/io/FancyOutputStream"
 import "flatlang/primitive/number/RealNumber"
 
 class Nest<X> {
-    visible static final FancyOutputStream out = FancyOutputStream()
+  visible static final FancyOutputStream out = FancyOutputStream()
 
-    X data
+  X data
 
-    construct(this X data) {}
+  construct(this X data) {}
 
-    public toBe(
-        X other,
-        String customMessage = null
-    ) => true {
-        if (other != data && (other == null || !other.equals(data))) {
-            let message = customMessage ?: "#data != #other"
+  public toBe(
+    X other,
+    String customMessage = null
+  ) => true {
+    if (other != data && (other == null || !other.equals(data))) {
+      let message = customMessage ?: "#data != #other"
 
-            throw InvalidAssertionException(message)
+      throw InvalidAssertionException(message)
 
-            return false
-        }
+      return false
     }
+  }
 
-    // or
+  // or
 
-    public toNotBe(
-        X other,
-        String customMessage = null
-    ) => true {
-        if (other == data || other != null && other.equals(data)) {
-            let message = customMessage ?: "#data == #other"
+  public toNotBe(
+    X other,
+    String customMessage = null
+  ) => true {
+    if (other == data || other != null && other.equals(data)) {
+      let message = customMessage ?: "#data == #other"
 
-            throw InvalidAssertionException(message)
+      throw InvalidAssertionException(message)
 
-            return false
-        }
+      return false
     }
+  }
 
-    [RequireGenericType X extends Double]
-    public toBeWithinToleranceOf(
-        Double target,
-        passing Double tolerance = 0.0001,
-        var String customMessage = null
-    ) => true {
-        if (!Double.withinTolerance((Double)data, target, tolerance)) {
-            let message = customMessage ?: "#data not within tolerance of #target"
+  [RequireGenericType X extends Double]
+  public toBeWithinToleranceOf(
+    Double target,
+    passing Double tolerance = 0.0001,
+    var String customMessage = null
+  ) => true {
+    if (!Double.withinTolerance((Double)data, target, tolerance)) {
+      let message = customMessage ?: "#data not within tolerance of #target"
 
-            throw InvalidAssertionException(message)
+      throw InvalidAssertionException(message)
 
-            return false
-        }
+      return false
     }
+  }
 
-    public toThrow(
-        Class exceptionType,
-        String customMessage = null,
-        Bool soft = false
-    ) {
-        let func() = data
+  public toThrow(
+    Class exceptionType,
+    String customMessage = null,
+    Bool soft = false
+  ) {
+    let func() = data
 
-        if (!Exception.catchType(func, exceptionType, soft)) {
-            let message = customMessage ?: "Did not throw exception type #exceptionType"
+    if (!Exception.catchType(func, exceptionType, soft)) {
+      let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-            throw InvalidAssertionException(message)
-        }
+      throw InvalidAssertionException(message)
     }
+  }
 
-    public toNotThrow(
-        Class exceptionType,
-        String customMessage = null,
-        Bool soft = false
-    ) {
-        let func() = data
+  public toNotThrow(
+    Class exceptionType,
+    String customMessage = null,
+    Bool soft = false
+  ) {
+    let func() = data
 
-        if (Exception.catchType(func, exceptionType, soft)) {
-            let message = customMessage ?: "Threw exception type #exceptionType"
+    if (Exception.catchType(func, exceptionType, soft)) {
+      let message = customMessage ?: "Threw exception type #exceptionType"
 
-            throw InvalidAssertionException(message)
-        }
+      throw InvalidAssertionException(message)
     }
+  }
 
-    public toThrowWithMessage(
-        Class exceptionType,
-        String expectedMessage,
-        String customMessage = null,
-        Bool soft = false
-    ) {
-        let func() = data
-        let e = Exception.catchType(func, exceptionType, soft)
+  public toThrowWithMessage(
+    Class exceptionType,
+    String expectedMessage,
+    String customMessage = null,
+    Bool soft = false
+  ) {
+    let func() = data
+    let e = Exception.catchType(func, exceptionType, soft)
 
-        if (!e) {
-            let message = customMessage ?: "Did not throw exception type #exceptionType"
+    if (!e) {
+      let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-            throw InvalidAssertionException(message)
-        } else if (e.message != expectedMessage) {
-            let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
+      throw InvalidAssertionException(message)
+    } else if (e.message != expectedMessage) {
+      let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
 
-            throw InvalidAssertionException(message)
-        }
+      throw InvalidAssertionException(message)
     }
+  }
 
-    public toNotThrowWithMessage(
-        Class exceptionType,
-        String expectedMessage,
-        String customMessage = null,
-        Bool soft = false
-    ) {
-        let func() = data
-        let e = Exception.catchType(func, exceptionType, soft)
+  public toNotThrowWithMessage(
+    Class exceptionType,
+    String expectedMessage,
+    String customMessage = null,
+    Bool soft = false
+  ) {
+    let func() = data
+    let e = Exception.catchType(func, exceptionType, soft)
 
-        if (e && e.message == expectedMessage) {
-            let message = customMessage ?: "Threw exception type #exceptionType"
+    if (e && e.message == expectedMessage) {
+      let message = customMessage ?: "Threw exception type #exceptionType"
 
-            throw InvalidAssertionException(message)
-        }
+      throw InvalidAssertionException(message)
     }
+  }
 
-    public static fail(String message = "Failure") {
-        throw InvalidAssertionException(message)
-    }
+  public static fail(String message = "Failure") {
+    throw InvalidAssertionException(message)
+  }
 
-    public static expect<T>(T obj) => Nest<T>(obj)
+  public static expect<T>(T obj) => Nest<T>(obj)
 
-    public static expect(func()) => Nest<func()>(func)
+  public static expect(func()) => Nest<func()>(func)
 
-    public static test(String description, testCode()) {
-        testCode()
-    }
+  public static test(String description, testCode()) {
+    testCode()
+  }
 }

@@ -3,17 +3,17 @@ package "novex/nest"
 import "flatlang/operators/EqualsOperator"
 
 class TestCase implements EqualsOperator<TestCase> {
-    visible String functionName
-    visible String description
+  visible String functionName
+  visible String description
 
-    visible String header => description ?: functionName
+  visible String header => description ?: functionName
 
-    static Int staticId = 0
-    visible Int id = ++staticId
-    public Long hashCodeLong => id
+  static Int staticId = 0
+  visible Int id = ++staticId
+  public Long hashCodeLong => id
 
-    public construct(visible String functionName, visible String description = null) {}
+  public construct(visible String functionName, visible String description = null) {}
 
-    public equals(TestCase other) => id == other.id
-    public toString() => "\"#header\""
+  public equals(TestCase other) => id == other.id
+  public toString() => "\"#header\""
 }

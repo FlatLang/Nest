@@ -1,9 +1,9 @@
 package "novex/nest"
 
 class TestSuite {
-    visible TestRunnerModel[] testRunners
-    
-    public construct(visible TestRunnerModel[] testRunners)
-    
-    public toString() => "TestSuite" + (testRunners ? " " + testRunners.toString() : "")
+  visible TestRunnerModel[] testRunners
+
+  public construct(visible TestRunnerModel[] testRunners)
+
+  public toString() => "TestSuite" + (testRunners ? " " + testRunners.toString() : "")
 }

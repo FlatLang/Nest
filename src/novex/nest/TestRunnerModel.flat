@@ -1,11 +1,11 @@
 package "novex/nest"
 
 class TestRunnerModel {
-    visible TestCase[] testCases <=> testCases
-    
-    visible String description
-    
-    public construct(visible TestCase[] testCases, visible String description = null) {}
-    
-    public toString() => "TestRunnerModel" + (description ? " \"" + description + '"' : "")
+  visible TestCase[] testCases <=> testCases
+
+  visible String description
+
+  public construct(visible TestCase[] testCases, visible String description = null) {}
+
+  public toString() => "TestRunnerModel" + (description ? " \"" + description + '"' : "")
 }
