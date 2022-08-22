@@ -14,7 +14,13 @@
     }
   },
   "test": {
-    "mainClass": "flatlang/http/Time_TestSuite",
+    "mainClass": "novex/nest/Nest_TestSuite",
+    "defaultExports": [
+      {
+        "location": "novex/nest/Nest",
+        "static": true
+      }
+    ],
     "source": "src",
     "dependencies": {}
   }
