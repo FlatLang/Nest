@@ -1,0 +1,10 @@
+package novex/nest
+
+import static novex/nest/Nest
+
+testable class {
+  test `can assert`() {
+    expect("hey").toBe("h" + "e" + "y")
+    expect("hey").toNotBe("h" + "e")
+  }
+}
