@@ -6,7 +6,9 @@ import flatlang/time/Timer
 import flatlang/io/FancyOutputStream
 
 [TestSuite [
-  Nest_Test
+  Nest_Test,
+  TypeNestTest,
+  EmbeddedNestTest
 ]]
 class {
   public static async main(String args[]) {
