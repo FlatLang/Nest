@@ -21,7 +21,7 @@
         "static": true
       }
     ],
-    "source": "src",
+    "source": "test",
     "dependencies": {}
   }
 }
