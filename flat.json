@@ -4,7 +4,9 @@
   "description": "Flat Testing Library",
   "author": "Braden Steffaniak",
   "license": "ISC",
-  "scripts": {},
+  "scripts": {
+    "test": "node dist/test.js"
+  },
   "main": {
     "source": "src",
     "dependencies": {
