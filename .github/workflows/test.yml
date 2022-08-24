@@ -39,6 +39,10 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
+      - name: Link Nest
+        run: |
+          node airship.js install --link
+
       - name: Build Nest Test
         run: |
           node airship.js install test -t es6
