@@ -7,8 +7,8 @@ import flatlang/io/FancyOutputStream
 
 [TestSuite [
   Nest_Test,
-  TypeNestTest,
-  EmbeddedNestTest
+  TypeNest_Test,
+  EmbeddedNest_Test
 ]]
 class {
   public static async main(String args[]) {
