@@ -2,8 +2,8 @@ package novex/nest
 
 import novex/nest/TestResult
 
-import flatlang/time/Timer
-import flatlang/io/FancyOutputStream
+import flat/time/Timer
+import flat/io/FancyOutputStream
 
 [TestSuite [
   Nest_Test,

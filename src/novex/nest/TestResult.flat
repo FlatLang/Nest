@@ -1,6 +1,6 @@
 package novex/nest
 
-import flatlang/time/Timer
+import flat/time/Timer
 
 class TestResult {
   visible Bool success
