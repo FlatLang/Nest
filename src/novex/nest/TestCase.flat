@@ -2,7 +2,7 @@ package novex/nest
 
 import flat/operators/EqualsOperator
 
-class TestCase implements EqualsOperator<TestCase> {
+class TestCase implements EqualsOperator {
   visible String functionName
   visible String description
 
