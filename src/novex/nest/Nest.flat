@@ -15,7 +15,17 @@ class Nest<X> {
     String customMessage = null
   ) => true {
     if (other != data && (other == null || !other.equals(data))) {
-      let message = customMessage ?: "#data != #other"
+      let message = customMessage ?: "|
+
+        expected:
+
+          #data
+
+        to be:
+
+          #other
+
+        |"
 
       throw InvalidAssertionException(message)
 
@@ -30,7 +40,17 @@ class Nest<X> {
     String customMessage = null
   ) => true {
     if (other == data || other != null && other.equals(data)) {
-      let message = customMessage ?: "#data == #other"
+      let message = customMessage ?: "|
+
+        expected:
+
+          #data
+
+        to not be:
+
+          #other
+
+        |"
 
       throw InvalidAssertionException(message)
 
