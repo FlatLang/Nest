@@ -3,11 +3,12 @@ package novex/nest
 import flat/time/Timer
 
 class TestResult {
-  visible Bool success
-  visible Timer timer
-  visible TestCase testCase
-
-  public construct(visible Bool success, visible Timer timer, visible TestCase testCase, visible String message = null) {}
+  public construct(
+    visible Bool success,
+    visible Timer timer,
+    visible TestCase testCase,
+    visible String message = null
+  ) {}
 
   public toString() => "#testCase => " + (success ? "Success" : "Failure: #message")
 }

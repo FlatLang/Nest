@@ -3,17 +3,18 @@ package novex/nest
 import flat/operators/EqualsOperator
 
 class TestCase implements EqualsOperator {
-  visible String functionName
-  visible String description
-
   visible String header => description ?: functionName
 
   static Int staticId = 0
   visible Int id = ++staticId
   public Long hashCodeLong => id
 
-  public construct(visible String functionName, visible String description = null) {}
+  public construct(
+    visible String className,
+    visible String functionName,
+    visible String description = null
+  ) {}
 
   public equals(TestCase other) => id == other.id
-  public toString() => "\"#header\""
+  public toString() => "#{className}: \"#{header}\""
 }
