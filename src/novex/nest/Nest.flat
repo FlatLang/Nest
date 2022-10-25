@@ -58,21 +58,6 @@ class Nest<X> {
     }
   }
 
-  [RequireGenericType X extends Double]
-  public toBeWithinToleranceOf(
-    Double target,
-    Double tolerance = 0.0001,
-    var String customMessage = null
-  ) => true {
-    if (!Double.withinTolerance((Double)data, target, tolerance)) {
-      let message = customMessage ?: "#data not within tolerance of #target"
-
-      throw InvalidAssertionException(message)
-
-      return false
-    }
-  }
-
   public toThrow(
     Class exceptionType,
     String customMessage = null,
