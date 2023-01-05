@@ -1,4 +1,4 @@
-name: Test Nest
+name: Test Test
 
 on:
   push:
@@ -51,11 +51,11 @@ jobs:
         run: |
           node airship.js setup
 
-      - name: Link Nest
+      - name: Link Test
         run: |
           node airship.js install --link
 
-      - name: Build Nest Test
+      - name: Build Test Test
         run: |
           node airship.js install test -t es6
 
@@ -65,6 +65,6 @@ jobs:
           name: test.js
           path: dist/test.js
 
-      - name: Run Nest Test
+      - name: Run Test Test
         run: |
           node airship.js run test

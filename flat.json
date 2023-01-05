@@ -1,5 +1,5 @@
 {
-  "name": "Nest",
+  "name": "Test",
   "version": "0.1.0",
   "description": "Flat Testing Library",
   "author": "Braden Steffaniak",
@@ -12,7 +12,7 @@
       "source": "src",
       "defaultExports": [
         {
-          "location": "novex/nest/Nest",
+          "location": "flat/test/Test",
           "static": true
         }
       ],
@@ -23,7 +23,7 @@
       }
     },
     "test": {
-      "mainClass": "novex/nest/Nest_TestSuite",
+      "mainClass": "flat/test/Test_TestSuite",
       "source": "src/**/*_Test*.flat",
       "dependencies": {}
     }

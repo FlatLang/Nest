@@ -1,18 +1,18 @@
-package novex/nest
+package flat/test
 
-import novex/nest/TestResult
+import flat/test/TestResult
 
 import flat/time/Timer
 import flat/io/FancyOutputStream
 
 [TestSuite [
-  Nest_Test,
-  TypeNest_Test,
-  EmbeddedNest_Test
+  Test_Test,
+  TypeTest_Test,
+  EmbeddedTest_Test
 ]]
 class {
   public static async main(String[] args) {
-    let test = Nest_TestSuite()
+    let test = Test_TestSuite()
 
     Timer timer = Timer().start()
 

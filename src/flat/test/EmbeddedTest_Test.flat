@@ -1,8 +1,8 @@
-package novex/nest
+package flat/test
 
-import novex/nest/NestException
+import flat/test/TestException
 
-import static novex/nest/Nest
+import static flat/test/Test
 
 testable class {
 	test embeddedFunction() {
@@ -15,7 +15,7 @@ testable class {
 
 	test lambdaFunction() {
 		test("something", {
-			expect({ throw NestException("hey there") }).toThrow(NestException.class)
+			expect({ throw TestException("hey there") }).toThrow(TestException.class)
 		})
 	}
 }

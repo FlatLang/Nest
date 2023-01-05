@@ -1,9 +1,9 @@
-package novex/nest
+package flat/test
 
 import flat/io/FancyOutputStream
 import flat/primitive/number/RealNumber
 
-class Nest<X> {
+class Test<X> {
   visible static FancyOutputStream out = FancyOutputStream()
 
   X data
@@ -126,9 +126,9 @@ class Nest<X> {
     throw InvalidAssertionException(message)
   }
 
-  public static expect<T>(T obj) => Nest<T>(obj)
+  public static expect<T>(T obj) => Test<T>(obj)
 
-  public static expect(func()) => Nest<func()>(func)
+  public static expect(func()) => Test<func()>(func)
 
   public static test(String description, testCode()) {
     testCode()

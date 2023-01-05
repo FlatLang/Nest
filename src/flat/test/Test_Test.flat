@@ -1,6 +1,6 @@
-package novex/nest
+package flat/test
 
-import static novex/nest/Nest
+import static flat/test/Test
 
 testable class {
   test `can assert`() {

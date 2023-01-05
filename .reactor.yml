@@ -1,2 +1,2 @@
 language: nova
-mainClassLocation: nova/nest/Nest.nova
+mainClassLocation: nova/test/Test.nova

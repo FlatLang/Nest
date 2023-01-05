@@ -1,5 +1,0 @@
-package novex/nest
-
-class NestException extends Exception {
-  public construct(String message) => super(message)
-}
