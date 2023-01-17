@@ -1,8 +1,6 @@
 package flat/test
 
-import flat/operators/EqualsOperator
-
-class TestCase implements EqualsOperator {
+class TestCase {
   visible String header => description ?: functionName
 
   static Int staticId = 0
