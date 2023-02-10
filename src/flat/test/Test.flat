@@ -8,7 +8,7 @@ class Test<X> {
 
   X data
 
-  construct(this X data) {}
+  public construct(this X data) {}
 
   public toBe(
     X other,
@@ -53,6 +53,17 @@ class Test<X> {
         |"
 
       throw InvalidAssertionException(message)
+
+      return false
+    }
+  }
+
+  public toBeTrue(
+    func(X data) -> Bool,
+    errorMessage(X data) -> String
+  ) => true {
+    if (!func(data)) {
+      throw InvalidAssertionException(errorMessage(data))
 
       return false
     }
@@ -129,6 +140,8 @@ class Test<X> {
   public static expect<T>(T obj) => Test<T>(obj)
 
   public static expect(func()) => Test<func()>(func)
+
+  public static expectAsync(async func()) => TestAsync(func)
 
   public static test(String description, testCode()) {
     testCode()
