@@ -1,5 +1,5 @@
 package flat/test
 
 class InvalidAssertionException extends TestException {
-  public construct(String message) => super(message)
+  public construct(String message = null) => super(message)
 }
