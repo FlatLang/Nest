@@ -21,9 +21,9 @@
         }
       ],
       "dependencies": {
-        "github:FlatLang/Time": "master",
-        "github:FlatLang/IO": "master",
-        "github:FlatLang/System": "master"
+        "https://github.com/FlatLang/Time": "master",
+        "https://github.com/FlatLang/IO": "master",
+        "https://github.com/FlatLang/System": "master"
       }
     },
     "test": {
