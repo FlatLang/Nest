@@ -3,12 +3,12 @@ package flat/test
 import flat/time/Timer
 
 class TestResult {
-  public construct(
-    visible Bool success,
-    visible Timer timer,
-    visible TestCase testCase,
-    visible String message = null
-  ) {}
+    public construct(
+        visible Bool success,
+        visible Timer timer,
+        visible TestCase testCase,
+        visible String message = null
+    ) {}
 
-  public toString() => "#testCase => " + (success ? "Success" : "Failure: #message")
+    public toString() => "#testCase => " + (success ? "Success" : "Failure: #message")
 }

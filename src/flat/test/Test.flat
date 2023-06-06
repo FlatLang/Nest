@@ -4,146 +4,146 @@ import flat/io/FancyOutputStream
 import flat/primitive/number/RealNumber
 
 class Test<X> {
-  visible static FancyOutputStream out = FancyOutputStream()
+    visible static FancyOutputStream out = FancyOutputStream()
 
-  X data
+    X data
 
-  public construct(this X data) {}
+    public construct(this X data) {}
 
-  public toBe(
-    X other,
-    String customMessage = null
-  ) => true {
-    if (other != data && (other == null || !other.equals(data))) {
-      let message = customMessage ?: "|
+    public toBe(
+        X other,
+        String customMessage = null
+    ) => true {
+        if (other != data && (other == null || !other.equals(data))) {
+            let message = customMessage ?: "|
 
-        expected:
+                expected:
 
-          #data
+                    #data
 
-        to be:
+                to be:
 
-          #other
+                    #other
 
-        |"
+                |"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
 
-      return false
+            return false
+        }
     }
-  }
 
-  // or
+    // or
 
-  public toNotBe(
-    X other,
-    String customMessage = null
-  ) => true {
-    if (other == data || other != null && other.equals(data)) {
-      let message = customMessage ?: "|
+    public toNotBe(
+        X other,
+        String customMessage = null
+    ) => true {
+        if (other == data || other != null && other.equals(data)) {
+            let message = customMessage ?: "|
 
-        expected:
+                expected:
 
-          #data
+                    #data
 
-        to not be:
+                to not be:
 
-          #other
+                    #other
 
-        |"
+                |"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
 
-      return false
+            return false
+        }
     }
-  }
 
-  public toBeTrue(
-    func(X data) -> Bool,
-    errorMessage(X data) -> String
-  ) => true {
-    if (!func(data)) {
-      throw InvalidAssertionException(errorMessage(data))
+    public toBeTrue(
+        func(X data) -> Bool,
+        errorMessage(X data) -> String
+    ) => true {
+        if (!func(data)) {
+            throw InvalidAssertionException(errorMessage(data))
 
-      return false
+            return false
+        }
     }
-  }
 
-  public toThrow(
-    Class exceptionType,
-    String customMessage = null,
-    Bool soft = false
-  ) {
-    let func() = data
+    public toThrow(
+        Class exceptionType,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
 
-    if (!Exception.catchType(func, exceptionType, soft)) {
-      let message = customMessage ?: "Did not throw exception type #exceptionType"
+        if (!Exception.catchType(func, exceptionType, soft)) {
+            let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
+        }
     }
-  }
 
-  public toNotThrow(
-    Class exceptionType,
-    String customMessage = null,
-    Bool soft = false
-  ) {
-    let func() = data
+    public toNotThrow(
+        Class exceptionType,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
 
-    if (Exception.catchType(func, exceptionType, soft)) {
-      let message = customMessage ?: "Threw exception type #exceptionType"
+        if (Exception.catchType(func, exceptionType, soft)) {
+            let message = customMessage ?: "Threw exception type #exceptionType"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
+        }
     }
-  }
 
-  public toThrowWithMessage(
-    Class exceptionType,
-    String expectedMessage,
-    String customMessage = null,
-    Bool soft = false
-  ) {
-    let func() = data
-    let e = Exception.catchType(func, exceptionType, soft)
+    public toThrowWithMessage(
+        Class exceptionType,
+        String expectedMessage,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
+        let e = Exception.catchType(func, exceptionType, soft)
 
-    if (!e) {
-      let message = customMessage ?: "Did not throw exception type #exceptionType"
+        if (!e) {
+            let message = customMessage ?: "Did not throw exception type #exceptionType"
 
-      throw InvalidAssertionException(message)
-    } else if (e.message != expectedMessage) {
-      let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
+            throw InvalidAssertionException(message)
+        } else if (e.message != expectedMessage) {
+            let message = customMessage ?: "Exception message of '#e.message' did not match '#expectedMessage'"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
+        }
     }
-  }
 
-  public toNotThrowWithMessage(
-    Class exceptionType,
-    String expectedMessage,
-    String customMessage = null,
-    Bool soft = false
-  ) {
-    let func() = data
-    let e = Exception.catchType(func, exceptionType, soft)
+    public toNotThrowWithMessage(
+        Class exceptionType,
+        String expectedMessage,
+        String customMessage = null,
+        Bool soft = false
+    ) {
+        let func() = data
+        let e = Exception.catchType(func, exceptionType, soft)
 
-    if (e && e.message == expectedMessage) {
-      let message = customMessage ?: "Threw exception type #exceptionType"
+        if (e && e.message == expectedMessage) {
+            let message = customMessage ?: "Threw exception type #exceptionType"
 
-      throw InvalidAssertionException(message)
+            throw InvalidAssertionException(message)
+        }
     }
-  }
 
-  public static fail(String message = "Failure") {
-    throw InvalidAssertionException(message)
-  }
+    public static fail(String message = "Failure") {
+        throw InvalidAssertionException(message)
+    }
 
-  public static expect<T>(T obj) => Test<T>(obj)
+    public static expect<T>(T obj) => Test<T>(obj)
 
-  public static expect(func()) => Test<func()>(func)
+    public static expect(func()) => Test<func()>(func)
 
-  public static expectAsync(async func()) => TestAsync(func)
+    public static expectAsync(async func()) => TestAsync(func)
 
-  public static test(String description, testCode()) {
-    testCode()
-  }
+    public static test(String description, testCode()) {
+        testCode()
+    }
 }
