@@ -7,8 +7,31 @@ class TestResult {
         visible Bool success,
         visible Timer timer,
         visible TestCase testCase,
-        visible String message = null
+        visible String message = null,
+        visible Exception exception = null
     ) {}
 
-    public toString() => "#testCase => " + (success ? "Success" : "Failure: #message")
+    public toString() -> String {
+        if (success) return "#{testCase} => Success"
+        
+        var output = "#{testCase} => Failure"
+
+        if (message) output += ": #{message}"
+        
+        if (exception) {
+            var String stack = null
+            var native native_array Char[] stackData
+
+            external js {
+                #{stackData} = #{exception}.error?.stack?.toString();
+                if (#{stackData}) {
+                    #{stack} = #{String(stackData)};
+                }
+            }
+
+            if (stack) output += "\n#{stack}"
+        }
+
+        return output
+    }
 }
